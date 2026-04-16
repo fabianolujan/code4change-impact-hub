@@ -29,14 +29,13 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "Code4Change – Rompemos Brechas Tecnológicas" },
+      { name: "description", content: "Iniciativa juvenil que utiliza la tecnología y la educación STEM para generar impacto social y reducir brechas de género en el Perú." },
+      { name: "author", content: "Code4Change" },
+      { property: "og:title", content: "Code4Change – Rompemos Brechas Tecnológicas" },
+      { property: "og:description", content: "Educación STEM gratuita para jóvenes del Perú. Cursos de Python, C++, Desarrollo Web y más." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
