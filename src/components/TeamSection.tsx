@@ -13,6 +13,8 @@ const leaders = [
     bio: "Becaria de UNICEF en el programa +ChicasTec. Participante de STEM para Todas y diversos programas de voluntariado. Creó Code4Change para ampliar el acceso a la educación STEM en comunidades vulnerables.",
     image: teamLuana,
     imagePosition: "right" as const,
+    accent: "border-primary/40",
+    glow: "from-primary/20 via-transparent to-transparent",
   },
   {
     name: "Alexandra Sullca",
@@ -21,6 +23,8 @@ const leaders = [
     bio: "Joven líder con experiencia en voluntariado y enseñanza virtual a niños. Clasificada a la segunda fase de la Olimpiada de Informática. Estudiante de Ingeniería de Software en la UPC.",
     image: teamSullca,
     imagePosition: "left" as const,
+    accent: "border-teal/40",
+    glow: "from-teal/20 via-transparent to-transparent",
   },
   {
     name: "Alexandra Villanueva",
@@ -29,6 +33,8 @@ const leaders = [
     bio: "Estudiante de quinto año de secundaria apasionada por la comunicación y el impacto social. Lidera la creación y difusión de contenidos que fortalecen la identidad digital de Code4Change.",
     image: teamVillanueva,
     imagePosition: "right" as const,
+    accent: "border-gold/40",
+    glow: "from-gold/20 via-transparent to-transparent",
   },
 ];
 
@@ -37,11 +43,13 @@ const tutors = [
     name: "Valeria Ortiz",
     role: "TUTORA DE DESARROLLO WEB",
     image: tutorValeria,
+    accent: "border-primary/30",
   },
   {
     name: "Piero",
     role: "TUTOR DE C",
     image: tutorPiero,
+    accent: "border-teal/30",
   },
 ];
 
@@ -68,7 +76,7 @@ export function TeamSection() {
         </motion.div>
 
         {/* Leaders */}
-        <div className="flex flex-col gap-16 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-14 max-w-5xl mx-auto">
           {leaders.map((person, i) => {
             const isImageLeft = person.imagePosition === "left";
             return (
@@ -80,15 +88,23 @@ export function TeamSection() {
                 transition={{ delay: i * 0.1 }}
                 className={`flex flex-col ${isImageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
               >
-                <div className="w-64 h-72 md:w-72 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-border">
-                  <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
+                {/* Photo with glow effect */}
+                <div className="relative shrink-0">
+                  <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${person.glow} blur-xl scale-110`} />
+                  <div className={`relative w-64 h-72 md:w-72 md:h-80 rounded-2xl overflow-hidden border-2 ${person.accent}`}>
+                    <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/30 to-transparent" />
+                  </div>
                 </div>
+
                 <div className="flex-1 text-center md:text-left">
                   <h3 className="font-display font-bold text-foreground text-2xl mb-1">{person.name}</h3>
-                  <p className="text-primary font-semibold text-sm mb-4">{person.role}</p>
+                  <span className="inline-block text-xs font-bold font-display px-3 py-1 rounded-full bg-primary/15 text-primary mb-4">
+                    {person.role}
+                  </span>
                   <p className="text-muted-foreground leading-relaxed mb-3">{person.bio}</p>
                   {person.quote && (
-                    <p className="text-sm italic text-gold mt-2">{person.quote}</p>
+                    <p className="text-sm italic text-gold border-l-2 border-gold/40 pl-3 mt-4">{person.quote}</p>
                   )}
                 </div>
               </motion.div>
@@ -101,23 +117,25 @@ export function TeamSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ delay: 0.2 }}
           className="mt-20"
         >
-          <h3 className="font-display font-bold text-foreground text-xl mb-4 text-center">Tutores Voluntarios</h3>
-          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-10 text-center">
-            Nuestros tutores acompañan y orientan a estudiantes en su proceso de aprendizaje en STEM,
-            brindando apoyo académico, mentoría y motivación.
-          </p>
-          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <h3 className="font-display font-bold text-foreground text-2xl mb-2">Tutores Voluntarios</h3>
+            <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+              Nuestros tutores acompañan y orientan a estudiantes en su proceso de aprendizaje en STEM,
+              brindando apoyo académico, mentoría y motivación.
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
             {tutors.map((tutor) => (
-              <div key={tutor.name} className="flex items-center gap-6">
-                <div className="w-28 h-28 md:w-36 md:h-36 shrink-0 rounded-2xl overflow-hidden border-2 border-border">
+              <div key={tutor.name} className={`glass-card rounded-2xl p-6 flex items-center gap-5 border ${tutor.accent}`}>
+                <div className="w-24 h-24 md:w-28 md:h-28 shrink-0 rounded-xl overflow-hidden">
                   <img src={tutor.image} alt={tutor.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <h4 className="font-display font-bold text-foreground text-2xl md:text-3xl">{tutor.name}</h4>
-                  <p className="text-primary font-bold text-sm md:text-base uppercase tracking-wide mt-1">{tutor.role}</p>
+                  <h4 className="font-display font-bold text-foreground text-xl md:text-2xl">{tutor.name}</h4>
+                  <p className="text-primary font-bold text-xs uppercase tracking-wider mt-1">{tutor.role}</p>
                 </div>
               </div>
             ))}
