@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo.png";
+import missionPhoto from "@/assets/mission-photo.png";
 
 export function HeroSection() {
   return (
@@ -21,7 +22,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <img src={logo} alt="Code4Change" className="h-28 md:h-40 mx-auto mb-6" />
+          <img src={logo} alt="Code4Change" className="h-36 md:h-52 mx-auto mb-6" />
           <p className="text-xl md:text-2xl text-primary font-display font-semibold mb-6">
             ROMPEMOS BRECHAS TECNOLÓGICAS
           </p>
@@ -45,26 +46,34 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="mt-20 grid md:grid-cols-2 gap-6 max-w-4xl mx-auto"
+          className="mt-20 max-w-4xl mx-auto"
         >
-          <div className="glass-card rounded-2xl p-8 text-left">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </div>
-              <h3 className="font-display text-lg font-bold text-foreground">Misión</h3>
+          {/* Mission - image + text side by side */}
+          <div className="flex flex-col md:flex-row items-center gap-8 mb-12">
+            <div className="w-full md:w-1/2 rounded-2xl overflow-hidden">
+              <img src={missionPhoto} alt="Niños aprendiendo tecnología" className="w-full h-64 md:h-72 object-cover rounded-2xl" />
             </div>
-            <p className="text-muted-foreground text-sm leading-relaxed">
-              Empoderar a niños, niñas y adolescentes a través de la educación STEM, reduciendo
-              brechas de género y acceso en comunidades vulnerables, para que se conviertan en
-              agentes de cambio en sus entornos.
-            </p>
+            <div className="w-full md:w-1/2 text-left">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-primary/20 flex items-center justify-center text-primary">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                  </svg>
+                </div>
+                <h3 className="font-display text-lg font-bold text-foreground">Misión</h3>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                Empoderar a niños, niñas y adolescentes a través de la educación STEM, reduciendo
+                brechas de género y acceso en comunidades vulnerables, para que se conviertan en
+                agentes de cambio en sus entornos.
+              </p>
+            </div>
           </div>
-          <div className="glass-card rounded-2xl p-8 text-left">
-            <div className="flex items-center gap-3 mb-4">
+
+          {/* Vision - centered below */}
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-lg bg-teal/20 flex items-center justify-center text-teal">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />

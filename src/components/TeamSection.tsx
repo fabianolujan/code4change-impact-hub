@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import teamLuana from "@/assets/team-luana.png";
 import teamSullca from "@/assets/team-sullca.png";
 import teamVillanueva from "@/assets/team-villanueva.png";
+import tutorValeria from "@/assets/tutor-valeria.jpg";
+import tutorPiero from "@/assets/tutor-piero.png";
 
 const leaders = [
   {
@@ -30,7 +32,18 @@ const leaders = [
   },
 ];
 
-const tutors = ["Valeria Ortiz", "Piero"];
+const tutors = [
+  {
+    name: "Valeria Ortiz",
+    role: "TUTORA DE DESARROLLO WEB",
+    image: tutorValeria,
+  },
+  {
+    name: "Piero",
+    role: "TUTOR DE C",
+    image: tutorPiero,
+  },
+];
 
 export function TeamSection() {
   return (
@@ -54,11 +67,10 @@ export function TeamSection() {
           </p>
         </motion.div>
 
-        {/* Leaders - alternating layout */}
+        {/* Leaders */}
         <div className="flex flex-col gap-16 max-w-5xl mx-auto">
           {leaders.map((person, i) => {
             const isImageLeft = person.imagePosition === "left";
-
             return (
               <motion.div
                 key={person.name}
@@ -68,24 +80,13 @@ export function TeamSection() {
                 transition={{ delay: i * 0.1 }}
                 className={`flex flex-col ${isImageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
               >
-                {/* Image */}
                 <div className="w-64 h-72 md:w-72 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-border">
-                  <img
-                    src={person.image}
-                    alt={person.name}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={person.image} alt={person.name} className="w-full h-full object-cover" />
                 </div>
-
-                {/* Info */}
-                <div className={`flex-1 ${isImageLeft ? "md:text-left" : "md:text-left"} text-center`}>
-                  <h3 className="font-display font-bold text-foreground text-2xl mb-1">
-                    {person.name}
-                  </h3>
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="font-display font-bold text-foreground text-2xl mb-1">{person.name}</h3>
                   <p className="text-primary font-semibold text-sm mb-4">{person.role}</p>
-                  <p className="text-muted-foreground leading-relaxed mb-3">
-                    {person.bio}
-                  </p>
+                  <p className="text-muted-foreground leading-relaxed mb-3">{person.bio}</p>
                   {person.quote && (
                     <p className="text-sm italic text-gold mt-2">{person.quote}</p>
                   )}
@@ -101,21 +102,24 @@ export function TeamSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-16 text-center"
+          className="mt-20"
         >
-          <h3 className="font-display font-bold text-foreground text-xl mb-4">Tutores Voluntarios</h3>
-          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">
+          <h3 className="font-display font-bold text-foreground text-xl mb-4 text-center">Tutores Voluntarios</h3>
+          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-10 text-center">
             Nuestros tutores acompañan y orientan a estudiantes en su proceso de aprendizaje en STEM,
             brindando apoyo académico, mentoría y motivación.
           </p>
-          <div className="flex items-center justify-center gap-4 flex-wrap">
-            {tutors.map((name) => (
-              <span
-                key={name}
-                className="glass-card px-5 py-2.5 rounded-xl text-sm text-foreground font-medium"
-              >
-                {name}
-              </span>
+          <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+            {tutors.map((tutor) => (
+              <div key={tutor.name} className="flex items-center gap-6">
+                <div className="w-28 h-28 md:w-36 md:h-36 shrink-0 rounded-2xl overflow-hidden border-2 border-border">
+                  <img src={tutor.image} alt={tutor.name} className="w-full h-full object-cover" />
+                </div>
+                <div>
+                  <h4 className="font-display font-bold text-foreground text-2xl md:text-3xl">{tutor.name}</h4>
+                  <p className="text-primary font-bold text-sm md:text-base uppercase tracking-wide mt-1">{tutor.role}</p>
+                </div>
+              </div>
             ))}
           </div>
         </motion.div>

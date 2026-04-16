@@ -1,29 +1,29 @@
 import { motion } from "framer-motion";
+import coursePython from "@/assets/course-python.png";
+import courseCpp from "@/assets/course-cpp.png";
+import courseBloques from "@/assets/course-bloques.png";
+import courseWeb from "@/assets/course-web.png";
 
 const courses = [
   {
-    icon: "🐍",
     title: "Programación con Python",
     description: "Aprende uno de los lenguajes más versátiles y demandados del mundo, desde lo básico hasta proyectos con impacto real.",
-    color: "bg-chart-3/15 text-chart-3",
+    image: coursePython,
   },
   {
-    icon: "⚡",
     title: "Programación con C++",
     description: "Domina la programación competitiva y el pensamiento algorítmico con uno de los lenguajes más potentes.",
-    color: "bg-chart-4/15 text-chart-4",
+    image: courseCpp,
   },
   {
-    icon: "🧩",
     title: "Programación con Bloques",
     description: "Para niños menores de 12 años. Aprende lógica de programación de forma visual, divertida e interactiva.",
-    color: "bg-chart-5/15 text-chart-5",
+    image: courseBloques,
   },
   {
-    icon: "🌐",
     title: "Desarrollo Web",
     description: "Crea páginas web con HTML, CSS y JavaScript. Aprende a construir tu propio espacio en internet.",
-    color: "bg-primary/15 text-primary",
+    image: courseWeb,
   },
 ];
 
@@ -67,13 +67,15 @@ export function ProgramsSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="glass-card rounded-2xl p-6 hover:scale-[1.03] transition-transform cursor-default"
+              className="glass-card rounded-2xl overflow-hidden hover:scale-[1.03] transition-transform cursor-default"
             >
-              <div className={`w-12 h-12 rounded-xl ${course.color} flex items-center justify-center text-2xl mb-4`}>
-                {course.icon}
+              <div className="h-40 overflow-hidden">
+                <img src={course.image} alt={course.title} className="w-full h-full object-cover" />
               </div>
-              <h3 className="font-display font-bold text-foreground mb-2">{course.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{course.description}</p>
+              <div className="p-6">
+                <h3 className="font-display font-bold text-foreground mb-2">{course.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{course.description}</p>
+              </div>
             </motion.div>
           ))}
         </div>
