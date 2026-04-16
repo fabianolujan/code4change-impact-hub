@@ -1,4 +1,7 @@
 import { motion } from "framer-motion";
+import teamLuana from "@/assets/team-luana.png";
+import teamSullca from "@/assets/team-sullca.png";
+import teamVillanueva from "@/assets/team-villanueva.png";
 
 const leaders = [
   {
@@ -6,24 +9,24 @@ const leaders = [
     role: "Fundadora y Directora General",
     quote: "\"Hazlo, y si tienes miedo hazlo con miedo\"",
     bio: "Becaria de UNICEF en el programa +ChicasTec. Participante de STEM para Todas y diversos programas de voluntariado. Creó Code4Change para ampliar el acceso a la educación STEM en comunidades vulnerables.",
-    initials: "LH",
-    gradient: "from-primary to-teal",
+    image: teamLuana,
+    imagePosition: "right" as const,
   },
   {
     name: "Alexandra Sullca",
     role: "CoFundadora",
     quote: "",
     bio: "Joven líder con experiencia en voluntariado y enseñanza virtual a niños. Clasificada a la segunda fase de la Olimpiada de Informática. Estudiante de Ingeniería de Software en la UPC.",
-    initials: "AS",
-    gradient: "from-teal to-chart-3",
+    image: teamSullca,
+    imagePosition: "left" as const,
   },
   {
     name: "Alexandra Villanueva",
     role: "Directora General de Contenido",
     quote: "",
     bio: "Estudiante de quinto año de secundaria apasionada por la comunicación y el impacto social. Lidera la creación y difusión de contenidos que fortalecen la identidad digital de Code4Change.",
-    initials: "AV",
-    gradient: "from-chart-3 to-gold",
+    image: teamVillanueva,
+    imagePosition: "right" as const,
   },
 ];
 
@@ -37,7 +40,7 @@ export function TeamSection() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-6"
+          className="text-center mb-16"
         >
           <p className="text-primary font-display font-semibold text-sm uppercase tracking-widest mb-3">
             El Equipo
@@ -51,28 +54,45 @@ export function TeamSection() {
           </p>
         </motion.div>
 
-        {/* Leaders */}
-        <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mt-12">
-          {leaders.map((person, i) => (
-            <motion.div
-              key={person.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="glass-card rounded-2xl p-6 text-center"
-            >
-              <div className={`w-20 h-20 rounded-full bg-gradient-to-br ${person.gradient} flex items-center justify-center mx-auto mb-4`}>
-                <span className="font-display text-xl font-bold text-primary-foreground">{person.initials}</span>
-              </div>
-              <h3 className="font-display font-bold text-foreground text-lg">{person.name}</h3>
-              <p className="text-primary text-sm font-semibold mb-3">{person.role}</p>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-3">{person.bio}</p>
-              {person.quote && (
-                <p className="text-xs italic text-gold">{person.quote}</p>
-              )}
-            </motion.div>
-          ))}
+        {/* Leaders - alternating layout */}
+        <div className="flex flex-col gap-16 max-w-5xl mx-auto">
+          {leaders.map((person, i) => {
+            const isImageLeft = person.imagePosition === "left";
+
+            return (
+              <motion.div
+                key={person.name}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`flex flex-col ${isImageLeft ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 md:gap-12`}
+              >
+                {/* Image */}
+                <div className="w-64 h-72 md:w-72 md:h-80 shrink-0 rounded-2xl overflow-hidden border-2 border-border">
+                  <img
+                    src={person.image}
+                    alt={person.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Info */}
+                <div className={`flex-1 ${isImageLeft ? "md:text-left" : "md:text-left"} text-center`}>
+                  <h3 className="font-display font-bold text-foreground text-2xl mb-1">
+                    {person.name}
+                  </h3>
+                  <p className="text-primary font-semibold text-sm mb-4">{person.role}</p>
+                  <p className="text-muted-foreground leading-relaxed mb-3">
+                    {person.bio}
+                  </p>
+                  {person.quote && (
+                    <p className="text-sm italic text-gold mt-2">{person.quote}</p>
+                  )}
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Tutors */}
@@ -81,7 +101,7 @@ export function TeamSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-12 text-center"
+          className="mt-16 text-center"
         >
           <h3 className="font-display font-bold text-foreground text-xl mb-4">Tutores Voluntarios</h3>
           <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">

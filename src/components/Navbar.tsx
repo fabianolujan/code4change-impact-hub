@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Inicio", href: "#inicio" },
@@ -30,9 +31,8 @@ export function Navbar() {
       }`}
     >
       <div className="section-container flex items-center justify-between h-16">
-        <a href="#inicio" className="font-display text-xl font-bold tracking-tight">
-          <span className="gradient-text">Code</span>
-          <span className="text-foreground">4Change</span>
+        <a href="#inicio" className="flex items-center gap-2">
+          <img src={logo} alt="Code4Change" className="h-10 w-auto" />
         </a>
 
         {/* Desktop */}

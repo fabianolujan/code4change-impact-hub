@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
+import logo from "@/assets/logo.png";
 
 export function HeroSection() {
   return (
@@ -20,10 +21,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="font-display text-5xl md:text-7xl font-bold tracking-tight mb-4">
-            <span className="gradient-text">CODE</span>{" "}
-            <span className="text-foreground">FOR CHANGE</span>
-          </h1>
+          <img src={logo} alt="Code4Change" className="h-28 md:h-40 mx-auto mb-6" />
           <p className="text-xl md:text-2xl text-primary font-display font-semibold mb-6">
             ROMPEMOS BRECHAS TECNOLÓGICAS
           </p>
