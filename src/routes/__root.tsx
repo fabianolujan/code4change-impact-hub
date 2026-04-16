@@ -1,6 +1,4 @@
-import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
-
-import appCss from "../styles.css?url";
+import { Outlet, Link, createRootRoute } from "@tanstack/react-router";
 
 function NotFoundComponent() {
   return (
@@ -25,45 +23,9 @@ function NotFoundComponent() {
 }
 
 export const Route = createRootRoute({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Code4Change – Rompemos Brechas Tecnológicas" },
-      { name: "description", content: "Iniciativa juvenil que utiliza la tecnología y la educación STEM para generar impacto social y reducir brechas de género en el Perú." },
-      { name: "author", content: "Code4Change" },
-      { property: "og:title", content: "Code4Change – Rompemos Brechas Tecnológicas" },
-      { property: "og:description", content: "Iniciativa juvenil que utiliza la tecnología y la educación STEM para generar impacto social y reducir brechas de género en el Perú." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:title", content: "Code4Change – Rompemos Brechas Tecnológicas" },
-      { name: "twitter:description", content: "Iniciativa juvenil que utiliza la tecnología y la educación STEM para generar impacto social y reducir brechas de género en el Perú." },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
-  }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
 });
-
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   return <Outlet />;
