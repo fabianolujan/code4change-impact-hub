@@ -2,15 +2,17 @@ import { defineConfig } from "vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { cloudflare } from "@cloudflare/vite-plugin";
 import path from "path";
 
-export default defineConfig(({ command }) => ({
+export default defineConfig({
   plugins: [
     tsconfigPaths(),
     tailwindcss(),
-    tanstackStart(),
-    ...(command === "build" ? [cloudflare()] : []),
+    tanstackStart({
+      server: {
+        preset: "vercel",
+      },
+    }),
   ],
   resolve: {
     alias: {
@@ -18,4 +20,4 @@ export default defineConfig(({ command }) => ({
     },
     dedupe: ["react", "react-dom", "@tanstack/react-query"],
   },
-}));
+});
