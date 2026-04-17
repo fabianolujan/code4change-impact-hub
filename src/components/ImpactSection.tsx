@@ -61,7 +61,7 @@ export function ImpactSection() {
           <h2 className="font-display text-3xl md:text-5xl font-bold text-foreground mb-4">
             Objetivos de <span className="gradient-text">Desarrollo Sostenible</span>
           </h2>
-          <p className="text-muted-foreground max-w-xl mx-auto">
+          <p className="text-gray-300 font-medium max-w-xl mx-auto">
             Nuestras acciones están alineadas con los ODS de las Naciones Unidas para
             construir un futuro más justo e inclusivo.
           </p>
