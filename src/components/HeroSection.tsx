@@ -40,10 +40,7 @@ export function HeroSection() {
           src={robot}
           alt="Robot Code4Change"
           className="w-72 lg:w-[22rem] xl:w-[26rem]"
-          style={{
-            mixBlendMode: "screen",
-            filter: "drop-shadow(0 0 32px rgba(6,182,212,0.35)) brightness(1.05) contrast(1.05)",
-          }}
+          style={{ filter: "drop-shadow(0 0 32px rgba(6,182,212,0.4))" }}
         />
       </motion.div>
 
