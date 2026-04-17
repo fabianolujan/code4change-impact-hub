@@ -36,13 +36,13 @@ export function HeroSection() {
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.9, delay: 0.2 }}
-            className="w-full md:w-[38%] flex items-center justify-center shrink-0 order-2 md:order-1"
+            className="w-full md:w-[42%] flex items-center justify-center shrink-0 order-2 md:order-1"
           >
             <img
               src={robot}
               alt="Robot Code4Change"
-              className="w-64 md:w-80 lg:w-96 drop-shadow-2xl"
-              style={{ mixBlendMode: "screen" }}
+              className="w-72 md:w-[26rem] lg:w-[30rem] drop-shadow-2xl"
+              style={{ mixBlendMode: "lighten", filter: "drop-shadow(0 0 40px rgba(6,182,212,0.3))" }}
             />
           </motion.div>
 
