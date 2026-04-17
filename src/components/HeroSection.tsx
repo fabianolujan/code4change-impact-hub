@@ -67,56 +67,114 @@ export function HeroSection() {
           ))}
         </motion.div>
 
-        {/* Mission & Vision */}
+        {/* Who we are */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.55 }}
           className="mt-20 max-w-5xl mx-auto"
         >
-          <div className="flex flex-col md:flex-row items-stretch gap-6 md:gap-8">
-            <div className="w-full md:w-[45%] rounded-2xl overflow-hidden shadow-2xl shrink-0">
-              <img
-                src={missionPhoto}
-                alt="Niños aprendiendo tecnología"
-                className="w-full h-full object-cover min-h-[260px]"
-              />
-            </div>
-            <div className="w-full md:flex-1 flex flex-col gap-4">
-              <div className="glass-card rounded-2xl p-6 text-left border-l-[3px] border-primary flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <circle cx="12" cy="12" r="10" />
-                      <path d="M12 6v6l4 2" />
-                    </svg>
-                  </div>
-                  <h3 className="font-display text-base font-bold text-foreground">Misión</h3>
+          {/* Section label */}
+          <p className="text-xs font-display font-semibold uppercase tracking-[0.2em] text-muted-foreground mb-10 text-center">
+            — Quiénes Somos —
+          </p>
+
+          {/* Photo + Mission + Vision grid */}
+          <div className="grid md:grid-cols-2 gap-5">
+
+            {/* Misión */}
+            <div className="glass-card rounded-2xl p-7 text-left flex flex-col gap-5 border border-primary/20 hover:border-primary/40 transition-colors duration-300">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  </svg>
                 </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Empoderar a niños, niñas y adolescentes a través de la educación STEM, reduciendo
-                  brechas de género y acceso en comunidades vulnerables, para que se conviertan en
-                  agentes de cambio en sus entornos.
-                </p>
+                <div>
+                  <p className="text-[10px] font-display font-bold uppercase tracking-widest text-primary mb-0.5">Misión</p>
+                  <h3 className="font-display text-lg font-bold text-foreground leading-tight">Educación STEM para todos</h3>
+                </div>
               </div>
 
-              <div className="glass-card rounded-2xl p-6 text-left border-l-[3px] border-teal flex-1">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-9 h-9 rounded-lg bg-teal/20 flex items-center justify-center text-teal shrink-0">
-                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
-                  <h3 className="font-display text-base font-bold text-foreground">Visión</h3>
-                </div>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Ser una organización referente en el Perú que transforma la vida de jóvenes
-                  mediante la tecnología con propósito social y democratizando el acceso a
-                  herramientas digitales.
-                </p>
-              </div>
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Empoderar a niños, niñas y adolescentes a través de la educación STEM, reduciendo
+                brechas de género y acceso en comunidades vulnerables, para que se conviertan en
+                agentes de cambio en sus entornos.
+              </p>
+
+              <ul className="space-y-2.5 pt-1 border-t border-border/40">
+                {[
+                  "Educación STEM gratuita y accesible",
+                  "Reducción de brechas de género en tecnología",
+                  "Empoderamiento de comunidades vulnerables",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-xs text-gray-400">
+                    <span className="w-4 h-4 rounded-full bg-primary/20 text-primary flex items-center justify-center shrink-0">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Visión */}
+            <div className="glass-card rounded-2xl p-7 text-left flex flex-col gap-5 border border-teal/20 hover:border-teal/40 transition-colors duration-300">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-teal/20 flex items-center justify-center text-teal shrink-0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 8v4l3 3" />
+                    <path d="M3.05 11a9 9 0 0 1 17.9 0" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-[10px] font-display font-bold uppercase tracking-widest text-teal mb-0.5">Visión</p>
+                  <h3 className="font-display text-lg font-bold text-foreground leading-tight">Referente nacional en tech social</h3>
+                </div>
+              </div>
+
+              <p className="text-sm text-gray-300 leading-relaxed">
+                Ser una organización referente en el Perú que transforma la vida de jóvenes
+                mediante la tecnología con propósito social, democratizando el acceso a
+                herramientas digitales en todo el país.
+              </p>
+
+              <ul className="space-y-2.5 pt-1 border-t border-border/40">
+                {[
+                  "Referente nacional en educación tecnológica",
+                  "Acceso democratizado a herramientas digitales",
+                  "Transformación social a través del conocimiento",
+                ].map((item) => (
+                  <li key={item} className="flex items-center gap-2.5 text-xs text-gray-400">
+                    <span className="w-4 h-4 rounded-full bg-teal/20 text-teal flex items-center justify-center shrink-0">
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                        <path d="M20 6L9 17l-5-5" />
+                      </svg>
+                    </span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {/* Values row */}
+          <div className="mt-5 glass-card rounded-2xl px-8 py-5 flex flex-wrap items-center justify-center gap-3 border border-border/30">
+            <span className="text-xs font-display font-bold uppercase tracking-widest text-muted-foreground mr-2">Nuestros valores</span>
+            {[
+              { label: "Inclusión", color: "bg-primary/15 text-primary border-primary/25" },
+              { label: "Innovación", color: "bg-teal/15 text-teal border-teal/25" },
+              { label: "Impacto Social", color: "bg-gold/15 text-gold border-gold/25" },
+              { label: "Colaboración", color: "bg-purple-400/15 text-purple-300 border-purple-400/25" },
+              { label: "Equidad", color: "bg-pink-400/15 text-pink-300 border-pink-400/25" },
+            ].map((v) => (
+              <span key={v.label} className={`text-xs font-semibold px-3 py-1.5 rounded-full border ${v.color}`}>
+                {v.label}
+              </span>
+            ))}
           </div>
         </motion.div>
       </div>
