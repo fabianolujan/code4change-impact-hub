@@ -146,28 +146,80 @@ export function ProgramsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-14 glass-card rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center"
+          className="mt-14 relative overflow-hidden rounded-2xl border border-primary/20"
         >
-          <div className="w-full md:w-[60%]">
-            <h3 className="font-display font-bold text-lg text-foreground mb-5">
-              También organizamos
-            </h3>
-            <ul className="space-y-4">
-              {extraItems.map((item) => (
-                <li key={item.text} className="flex items-start gap-3">
-                  {item.icon}
-                  <span className="text-sm text-gray-300 leading-relaxed">{item.text}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Gradient background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-teal/8" />
+          <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+          <div className="absolute bottom-0 left-1/3 w-48 h-48 rounded-full bg-teal/5 blur-2xl pointer-events-none" />
 
-          <div className="w-full md:w-[40%] flex items-center justify-center md:border-l border-border/40 md:pl-8">
-            <div className="text-center">
-              <p className="text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">
-                100%
-              </p>
-              <p className="text-sm text-gray-300 mt-2 font-medium">Gratuito</p>
+          <div className="relative p-8 md:p-10">
+            {/* Header */}
+            <div className="mb-8 text-center md:text-left">
+              <p className="text-[10px] font-display font-bold uppercase tracking-[0.2em] text-primary mb-1">Más allá de los cursos</p>
+              <h3 className="font-display font-bold text-xl text-foreground">También organizamos</h3>
+            </div>
+
+            {/* Feature cards + stat */}
+            <div className="grid md:grid-cols-4 gap-4 items-stretch">
+              {/* 3 feature cards */}
+              {[
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M3 11l19-9-9 19-2-8-8-2z" />
+                    </svg>
+                  ),
+                  color: "text-primary bg-primary/15 border-primary/20",
+                  title: "Charlas educativas",
+                  text: "Difusión de oportunidades en colegios e instituciones educativas",
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                      <circle cx="9" cy="7" r="4" />
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                  ),
+                  color: "text-teal bg-teal/15 border-teal/20",
+                  title: "Comunidad joven",
+                  text: "Red de jóvenes con interés en tecnología y cambio social",
+                },
+                {
+                  icon: (
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z" />
+                    </svg>
+                  ),
+                  color: "text-gold bg-gold/15 border-gold/20",
+                  title: "Hackathones & ferias",
+                  text: "Participación en concursos, ferias y competencias nacionales",
+                },
+              ].map((card) => (
+                <div
+                  key={card.title}
+                  className={`rounded-xl border p-5 flex flex-col gap-3 bg-background/40 backdrop-blur-sm hover:scale-[1.02] transition-transform duration-200 ${card.color.split(" ")[2]}`}
+                >
+                  <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${card.color.split(" ").slice(0, 2).join(" ")}`}>
+                    {card.icon}
+                  </div>
+                  <div>
+                    <p className="font-display font-bold text-foreground text-sm mb-1">{card.title}</p>
+                    <p className="text-xs text-gray-400 leading-relaxed">{card.text}</p>
+                  </div>
+                </div>
+              ))}
+
+              {/* Stat */}
+              <div className="rounded-xl border border-cyan-400/20 bg-gradient-to-br from-cyan-500/10 to-teal-500/10 p-5 flex flex-col items-center justify-center text-center">
+                <p className="text-5xl font-display font-black bg-clip-text text-transparent bg-gradient-to-b from-cyan-300 to-teal-400 leading-none">
+                  100%
+                </p>
+                <p className="text-xs font-semibold text-gray-300 mt-2 uppercase tracking-widest">Gratuito</p>
+                <div className="mt-3 w-8 h-px bg-gradient-to-r from-transparent via-cyan-400 to-transparent" />
+                <p className="text-[10px] text-gray-500 mt-2">Sin costo para estudiantes</p>
+              </div>
             </div>
           </div>
         </motion.div>
