@@ -22,36 +22,39 @@ export function HeroSection() {
         className="absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
+      {/* Zona oscura en la izquierda para que el blend mode funcione */}
+      <div className="absolute inset-y-0 left-0 w-[48%] bg-gradient-to-r from-background via-background/95 to-transparent hidden md:block" />
 
       {/* Glow orbs */}
-      <div className="absolute top-1/4 left-1/5 w-[500px] h-[500px] rounded-full bg-primary/8 blur-[120px] pointer-events-none" />
       <div className="absolute top-1/3 right-1/5 w-96 h-96 rounded-full bg-teal/8 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
 
+      {/* Robot absolutamente a la izquierda */}
+      <motion.div
+        initial={{ opacity: 0, x: -60 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-start pl-4 lg:pl-10 w-[44%]"
+      >
+        <img
+          src={robot}
+          alt="Robot Code4Change"
+          className="w-72 lg:w-[22rem] xl:w-[26rem]"
+          style={{
+            mixBlendMode: "screen",
+            filter: "drop-shadow(0 0 32px rgba(6,182,212,0.35)) brightness(1.05) contrast(1.05)",
+          }}
+        />
+      </motion.div>
+
       <div className="relative z-10 section-container py-32">
-        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-0">
-
-          {/* Robot — izquierda */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.9, delay: 0.2 }}
-            className="w-full md:w-[42%] flex items-center justify-center shrink-0 order-2 md:order-1"
-          >
-            <img
-              src={robot}
-              alt="Robot Code4Change"
-              className="w-72 md:w-[26rem] lg:w-[30rem] drop-shadow-2xl"
-              style={{ mixBlendMode: "lighten", filter: "drop-shadow(0 0 40px rgba(6,182,212,0.3))" }}
-            />
-          </motion.div>
-
+        <div className="flex justify-center md:justify-end">
           {/* Texto — derecha */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full md:flex-1 text-center md:text-left order-1 md:order-2"
+            className="w-full md:w-[56%] text-center md:text-left"
           >
             <img src={logo} alt="Code4Change" className="h-28 md:h-40 mx-auto md:mx-0 mb-5 drop-shadow-2xl" />
             <p className="text-lg md:text-2xl text-primary font-display font-semibold mb-5 tracking-widest">
