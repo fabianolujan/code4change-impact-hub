@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import logo from "@/assets/logo.png";
 import missionPhoto from "@/assets/mission-photo.png";
+import robot from "@/assets/robot.png";
 
 const stats = [
   { value: "4", label: "Cursos STEM" },
@@ -27,30 +28,50 @@ export function HeroSection() {
       <div className="absolute top-1/3 right-1/5 w-96 h-96 rounded-full bg-teal/8 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
 
-      <div className="relative z-10 section-container text-center py-32">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <img src={logo} alt="Code4Change" className="h-36 md:h-52 mx-auto mb-6 drop-shadow-2xl" />
-          <p className="text-xl md:text-2xl text-primary font-display font-semibold mb-6 tracking-widest">
-            ROMPEMOS BRECHAS TECNOLÓGICAS
-          </p>
-          <p className="max-w-2xl mx-auto text-muted-foreground text-lg leading-relaxed mb-10">
-            Somos una iniciativa juvenil que utiliza la tecnología y la educación STEM como
-            herramientas para generar impacto social y reducir brechas de género en el Perú.
-          </p>
-          <a
-            href="#unete"
-            className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-semibold px-9 py-4 rounded-xl glow-cyan transition-all duration-300 hover:scale-105 hover:brightness-110 text-base"
+      <div className="relative z-10 section-container py-32">
+        <div className="flex flex-col md:flex-row items-center gap-8 md:gap-0">
+
+          {/* Robot — izquierda */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="w-full md:w-[38%] flex items-center justify-center shrink-0 order-2 md:order-1"
           >
-            Únete al cambio
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
-          </a>
-        </motion.div>
+            <img
+              src={robot}
+              alt="Robot Code4Change"
+              className="w-64 md:w-80 lg:w-96 drop-shadow-2xl"
+              style={{ mixBlendMode: "screen" }}
+            />
+          </motion.div>
+
+          {/* Texto — derecha */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="w-full md:flex-1 text-center md:text-left order-1 md:order-2"
+          >
+            <img src={logo} alt="Code4Change" className="h-28 md:h-40 mx-auto md:mx-0 mb-5 drop-shadow-2xl" />
+            <p className="text-lg md:text-2xl text-primary font-display font-semibold mb-5 tracking-widest">
+              ROMPEMOS BRECHAS TECNOLÓGICAS
+            </p>
+            <p className="max-w-xl text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
+              Somos una iniciativa juvenil que utiliza la tecnología y la educación STEM como
+              herramientas para generar impacto social y reducir brechas de género en el Perú.
+            </p>
+            <a
+              href="#unete"
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display font-semibold px-9 py-4 rounded-xl glow-cyan transition-all duration-300 hover:scale-105 hover:brightness-110 text-base"
+            >
+              Únete al cambio
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          </motion.div>
+        </div>
 
         {/* Stats strip */}
         <motion.div
