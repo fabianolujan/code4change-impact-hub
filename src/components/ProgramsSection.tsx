@@ -11,7 +11,6 @@ const courses = [
     image: coursePython,
     accent: "from-primary/30 to-primary/0",
     ctaColor: "text-primary hover:text-primary/80",
-    arrowColor: "text-primary",
   },
   {
     title: "Programación con C++",
@@ -19,7 +18,6 @@ const courses = [
     image: courseCpp,
     accent: "from-teal/30 to-teal/0",
     ctaColor: "text-teal hover:text-teal/80",
-    arrowColor: "text-teal",
   },
   {
     title: "Programación con Bloques",
@@ -27,7 +25,6 @@ const courses = [
     image: courseBloques,
     accent: "from-gold/30 to-gold/0",
     ctaColor: "text-gold hover:text-gold/80",
-    arrowColor: "text-gold",
   },
   {
     title: "Desarrollo Web",
@@ -35,7 +32,6 @@ const courses = [
     image: courseWeb,
     accent: "from-purple-400/30 to-purple-400/0",
     ctaColor: "text-purple-400 hover:text-purple-300",
-    arrowColor: "text-purple-400",
   },
 ];
 
@@ -79,7 +75,7 @@ const fadeUp = {
 
 export function ProgramsSection() {
   return (
-    <section id="programas" className="py-24">
+    <section id="programas" className="py-28">
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -108,15 +104,19 @@ export function ProgramsSection() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="group glass-card rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-[0_0_24px_2px_oklch(0.75_0.15_195_/_18%)] hover:border-primary/30 border border-transparent transition-all duration-300"
+              className="group glass-card rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 hover:shadow-[0_0_24px_2px_rgba(6,182,212,0.18)] hover:border-primary/30 border border-transparent transition-all duration-300"
             >
-              <div className="relative h-44 overflow-hidden shrink-0">
+              {/* Image with aspect-video + overlays */}
+              <div className="relative aspect-video overflow-hidden shrink-0">
                 <img
                   src={course.image}
                   alt={course.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className={`absolute inset-0 bg-gradient-to-t ${course.accent} opacity-60`} />
+                {/* Base dark overlay for visual unity */}
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-all duration-300" />
+                {/* Accent gradient overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-t ${course.accent} opacity-50`} />
               </div>
 
               <div className="p-5 flex flex-col flex-1">
@@ -140,16 +140,16 @@ export function ProgramsSection() {
           ))}
         </div>
 
-        {/* Extra info */}
+        {/* "También organizamos" banner */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-10 glass-card rounded-2xl p-8 flex flex-col md:flex-row gap-6 items-center"
+          className="mt-14 glass-card rounded-2xl p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center"
         >
           <div className="w-full md:w-[60%]">
-            <h3 className="font-display font-bold text-lg text-foreground mb-4">
+            <h3 className="font-display font-bold text-lg text-foreground mb-5">
               También organizamos
             </h3>
             <ul className="space-y-4">
@@ -162,9 +162,11 @@ export function ProgramsSection() {
             </ul>
           </div>
 
-          <div className="w-full md:w-[40%] flex items-center justify-center md:border-l border-border/40 md:pl-6">
+          <div className="w-full md:w-[40%] flex items-center justify-center md:border-l border-border/40 md:pl-8">
             <div className="text-center">
-              <p className="text-6xl font-display font-bold gradient-text">100%</p>
+              <p className="text-6xl font-display font-bold bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-cyan-400">
+                100%
+              </p>
               <p className="text-sm text-gray-300 mt-2 font-medium">Gratuito</p>
             </div>
           </div>

@@ -46,7 +46,7 @@ const ods = [
 
 export function ImpactSection() {
   return (
-    <section id="impacto" className="py-24 relative">
+    <section id="impacto" className="py-28 relative">
       <div className="absolute inset-0 bg-gradient-to-b from-background via-navy-light/20 to-background" />
       <div className="relative section-container">
         <motion.div
