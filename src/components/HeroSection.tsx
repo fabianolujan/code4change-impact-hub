@@ -21,39 +21,39 @@ export function HeroSection() {
         height={1080}
         className="absolute inset-0 w-full h-full object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/50 via-background/80 to-background" />
-      {/* Zona oscura en la izquierda para que el blend mode funcione */}
-      <div className="absolute inset-y-0 left-0 w-[48%] bg-gradient-to-r from-background via-background/95 to-transparent hidden md:block" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/85 to-background" />
 
       {/* Glow orbs */}
       <div className="absolute top-1/3 right-1/5 w-96 h-96 rounded-full bg-teal/8 blur-[100px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-1/4 w-80 h-80 rounded-full bg-gold/5 blur-[100px] pointer-events-none" />
 
-      {/* Robot absolutamente a la izquierda */}
-      <motion.div
-        initial={{ opacity: 0, x: -60 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 0.2 }}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 hidden md:flex items-center justify-start pl-4 lg:pl-10 w-[44%]"
-      >
-        <img
-          src={robot}
-          alt="Robot Code4Change"
-          className="w-72 lg:w-[22rem] xl:w-[26rem]"
-          style={{ filter: "drop-shadow(0 0 32px rgba(6,182,212,0.4))" }}
-        />
-      </motion.div>
+      <div className="relative z-10 section-container py-20">
+        {/* Fila principal: Robot izquierda | Texto derecha */}
+        <div className="flex items-center gap-6 lg:gap-10 min-h-[60vh]">
 
-      <div className="relative z-10 section-container py-32">
-        <div className="flex justify-center md:justify-end">
-          {/* Texto — derecha */}
+          {/* Robot — columna izquierda */}
+          <motion.div
+            initial={{ opacity: 0, x: -60 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="hidden md:flex items-center justify-center w-[42%] shrink-0"
+          >
+            <img
+              src={robot}
+              alt="Robot Code4Change"
+              className="w-64 lg:w-[22rem] xl:w-[26rem] max-h-[70vh] object-contain"
+              style={{ filter: "drop-shadow(0 0 36px rgba(6,182,212,0.45))" }}
+            />
+          </motion.div>
+
+          {/* Texto — columna derecha */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full md:w-[56%] text-center md:text-left"
+            className="flex-1 text-center md:text-left"
           >
-            <img src={logo} alt="Code4Change" className="h-28 md:h-40 mx-auto md:mx-0 mb-5 drop-shadow-2xl" />
+            <img src={logo} alt="Code4Change" className="h-52 md:h-64 lg:h-80 xl:h-96 mx-auto md:mx-0 mb-5 drop-shadow-2xl" />
             <p className="text-lg md:text-2xl text-primary font-display font-semibold mb-5 tracking-widest">
               ROMPEMOS BRECHAS TECNOLÓGICAS
             </p>

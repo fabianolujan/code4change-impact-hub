@@ -11,6 +11,9 @@ const courses = [
     image: coursePython,
     accent: "from-primary/30 to-primary/0",
     ctaColor: "text-primary hover:text-primary/80",
+    badge: "12+ años",
+    level: "Básico · Intermedio",
+    levelColor: "text-primary bg-primary/10 border-primary/20",
   },
   {
     title: "Programación con C++",
@@ -18,6 +21,9 @@ const courses = [
     image: courseCpp,
     accent: "from-teal/30 to-teal/0",
     ctaColor: "text-teal hover:text-teal/80",
+    badge: "14+ años",
+    level: "Intermedio · Avanzado",
+    levelColor: "text-teal bg-teal/10 border-teal/20",
   },
   {
     title: "Programación con Bloques",
@@ -25,6 +31,9 @@ const courses = [
     image: courseBloques,
     accent: "from-gold/30 to-gold/0",
     ctaColor: "text-gold hover:text-gold/80",
+    badge: "6 - 12 años",
+    level: "Principiante",
+    levelColor: "text-gold bg-gold/10 border-gold/20",
   },
   {
     title: "Desarrollo Web",
@@ -32,6 +41,9 @@ const courses = [
     image: courseWeb,
     accent: "from-purple-400/30 to-purple-400/0",
     ctaColor: "text-purple-400 hover:text-purple-300",
+    badge: "12+ años",
+    level: "Básico",
+    levelColor: "text-purple-300 bg-purple-400/10 border-purple-400/20",
   },
 ];
 
@@ -113,14 +125,22 @@ export function ProgramsSection() {
                   alt={course.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                {/* Base dark overlay for visual unity */}
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/35 transition-all duration-300" />
-                {/* Accent gradient overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-t ${course.accent} opacity-50`} />
+                {/* Age badge top-left */}
+                <span className="absolute top-2.5 left-2.5 text-[10px] font-bold bg-background/70 backdrop-blur-sm text-foreground px-2 py-0.5 rounded-full border border-white/10">
+                  {course.badge}
+                </span>
               </div>
 
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-display font-bold text-foreground mb-2 text-[0.95rem]">{course.title}</h3>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <h3 className="font-display font-bold text-foreground text-[0.95rem] leading-tight">{course.title}</h3>
+                </div>
+                {/* Level chip */}
+                <span className={`self-start text-[10px] font-semibold px-2 py-0.5 rounded-full border mb-2 ${course.levelColor}`}>
+                  {course.level}
+                </span>
                 <p className="text-sm text-muted-foreground leading-relaxed line-clamp-3 flex-1">
                   {course.description}
                 </p>
