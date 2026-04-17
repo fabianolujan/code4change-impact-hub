@@ -127,7 +127,7 @@ export function CTASection() {
           className="mt-14 text-center"
         >
           <a
-            href="https://sites.google.com/view/code4change/inicio"
+            href="https://linktr.ee/code4changee"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-3 bg-primary text-primary-foreground font-display font-semibold px-10 py-4 rounded-xl glow-cyan text-lg transition-all duration-300 hover:scale-105 hover:brightness-110"
